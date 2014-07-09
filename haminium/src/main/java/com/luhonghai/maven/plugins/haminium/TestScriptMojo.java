@@ -1,19 +1,33 @@
-/**
- * Copyright (c) CMG Ltd All rights reserved.
+/** The MIT License (MIT)
  *
- * This software is the confidential and proprietary information of CMG
- * ("Confidential Information"). You shall not disclose such Confidential
- * Information and shall use it only in accordance with the terms of the
- * license agreement you entered into with CMG.
+ *   Copyright (c) 2004 Hai Lu luhonghai@gmail.com
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in
+ *   all copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ *   THE SOFTWARE.
  */
 
-package com.cmg.maven.plugins.cmgium;
+package com.luhonghai.maven.plugins.haminium;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import com.cmg.maven.plugins.cmgium.utils.*;
+import com.luhonghai.maven.plugins.haminium.utils.*;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.AbstractMojo;
@@ -27,11 +41,6 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 
-/**
- * Goal which generates test script
- *
- * @author Hai Lu
- */
 @Mojo(defaultPhase = LifecyclePhase.GENERATE_TEST_SOURCES, name = "init")
 public class TestScriptMojo extends AbstractMojo {
 
