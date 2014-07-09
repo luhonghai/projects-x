@@ -1,0 +1,21 @@
+testCase1
+open	/pablo/content/login.html?requestedResource=1	
+type	id=_request_username	anh.nguyen1
+type	id=_request_password	1234561
+click	id=check_term1	
+clickAndWait	name=doauth	
+
+
+testCase2
+open	/pablo/content/login\.html?requestedResource=2	
+type	id=_request_username	anh.nguyen2
+type	id=_request_password	1234562
+clickAndWait	name=doauth2
+
+
+testCase3
+open	/pablo/content/login.html?requestedRe"source=3	
+type	id=_request_username	anh.nguyen3
+type	id=_request_password	1234563
+click	id=check_term3
+clickAndWait	name=doauth3	

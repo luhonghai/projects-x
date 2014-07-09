@@ -1,0 +1,547 @@
+echo
+===
+System.out.println("%p1%");
+=====
+pause
+===
+Thread.sleep(%p1%);
+=====
+assertNotAlert
+===
+assertNotEquals("%p1%", selenium().getAlert());
+=====
+assertNotAlertPresent
+===
+assertFalse(selenium().isAlertPresent());
+=====
+assertNotAllButtons
+===
+assertNotEquals("%p1%", join(selenium().getAllButtons(), ','));
+=====
+assertNotAllFields
+===
+assertNotEquals("%p1%", join(selenium().getAllFields(), ','));
+=====
+assertNotAllLinks
+===
+assertNotEquals("%p1%", join(selenium().getAllLinks(), ','));
+=====
+assertNotAllWindowIds
+===
+assertNotEquals("%p1%", join(selenium().getAllWindowIds(), ','));
+=====
+assertNotAllWindowNames
+===
+assertNotEquals("%p1%", join(selenium().getAllWindowNames(), ','));
+=====
+assertNotAllWindowTitles
+===
+assertNotEquals("%p1%", join(selenium().getAllWindowTitles(), ','));
+=====
+assertNotAttribute
+===
+assertNotEquals("%p2%", selenium().getAttribute("%p1%"));
+=====
+assertNotAttributeFromAllWindows
+===
+assertNotEquals("%p2%", join(selenium().getAttributeFromAllWindows("%p1%"), ','));
+=====
+assertNotBodyText
+===
+assertNotEquals("%p1%", selenium().getBodyText());
+=====
+assertNotChecked
+===
+assertFalse(selenium().isChecked("%p1%"));
+=====
+assertNotConfirmation
+===
+assertNotEquals("%p1%", selenium().getConfirmation());
+=====
+assertNotCookie
+===
+assertNotEquals("%p1%", selenium().getCookie());
+=====
+assertNotCookieByName
+===
+assertNotEquals("%p2%", selenium().getCookieByName("%p1%"));
+=====
+assertNotCssCount
+===
+assertNotEquals("%p2%", selenium().getCssCount("%p1%"));
+=====
+assertNotCursorPositionassertNotEquals("%p2%", selenium().getEval("%p1%"));
+===
+assertNotEquals("%p2%", selenium().getCursorPosition("%p1%"));
+=====
+assertNotElementHeight
+===
+assertNotEquals("%p2%", selenium().getElementHeight("%p1%"));
+=====
+assertNotElementIndex
+===
+assertNotEquals("%p2%", selenium().getElementIndex("%p1%"));
+=====
+assertNotElementPositionLeft
+===
+assertNotEquals("%p2%", selenium().getElementPositionLeft("%p1%"));
+=====
+assertNotElementPositionTop
+===
+assertNotEquals("%p2%", selenium().getElementPositionTop("%p1%"));
+=====
+assertNotElementWidth
+===
+assertNotEquals("%p2%", selenium().getElementWidth("%p1%"));
+=====
+assertNotEval
+===
+assertNotEquals("%p2%", selenium().getEval("%p1%"));
+=====
+assertNotExpression
+===
+assertNotEquals("%p2%", selenium().getExpression("%p1%"));
+=====
+assertNotHtmlSource
+===
+assertNotEquals("%p1%", selenium().getHtmlSource());
+=====
+assertNotLocation
+===
+assertNotEquals("%p1%", selenium().getLocation());
+=====
+assertNotMouseSpeed
+===
+assertNotEquals("%p1%", selenium().getMouseSpeed());
+=====
+assertNotOrdered
+===
+assertFalse(selenium().isOrdered("%p1%", "%p2%"));
+=====
+assertNotPrompt
+===
+assertNotEquals("%p1%", selenium().getPrompt());
+=====
+assertNotSelectOptions
+===
+assertNotEquals("%p2%", join(selenium().getSelectOptions("%p1%"), ','));
+=====
+assertNotSelectedId
+===
+assertNotEquals("%p2%", selenium().getSelectedId("%p1%"));
+=====
+assertNotSelectedIds
+===
+assertNotEquals("%p2%", join(selenium().getSelectedIds("%p1%"), ','));
+=====
+assertNotSelectedIndex
+===
+assertNotEquals("%p2%", selenium().getSelectedIndex("%p1%"));
+=====
+assertNotSelectedIndexes
+===
+assertNotEquals("%p2%", join(selenium().getSelectedIndexes("%p1%"), ','));
+=====
+assertNotSelectedLabel
+===
+assertNotEquals("%p2%", selenium().getSelectedLabel("%p1%"));
+=====
+assertNotSelectedLabels
+===
+assertNotEquals("%p2%", join(selenium().getSelectedLabels("%p1%"), ','));
+=====
+assertNotSelectedValue
+===
+assertNotEquals("%p2%", selenium().getSelectedValue("%p1%"));
+=====
+assertNotSelectedValues
+===
+assertNotEquals("%p2%", join(selenium().getSelectedValues("%p1%"), ','));
+=====
+assertNotSomethingSelected
+===
+assertFalse(selenium().isSomethingSelected("%p1%"));
+=====
+assertNotSpeed
+===
+assertNotEquals("%p1%", selenium().getSpeed());
+=====
+assertNotTable
+===
+assertNotEquals("%p2%", selenium().getTable("%p1%"));
+=====
+assertNotText
+===
+assertNotEquals("%p2%", selenium().getText("%p1%"));
+=====
+assertNotValue
+===
+assertNotEquals("%p2%", selenium().getValue("%p1%"));
+=====
+assertNotVisible
+===
+assertFalse(selenium().isVisible("%p1%"));
+=====
+assertNotXpathCount
+===
+assertNotEquals("%p2%", selenium().getXpathCount("%p1%"));
+=====
+assertAlert
+===
+assertEquals("%p1%", selenium().getAlert());
+=====
+assertAlertPresent
+===
+assertTrue(selenium().isAlertPresent());
+=====
+assertAllButtons
+===
+assertEquals("%p1%", join(selenium().getAllButtons(), ','));
+=====
+assertAllFields
+===
+assertEquals("%p1%", join(selenium().getAllFields(), ','));
+=====
+assertAllLinks
+===
+assertEquals("%p1%", join(selenium().getAllLinks(), ','));
+=====
+assertAllWindowIds
+===
+assertEquals("%p1%", join(selenium().getAllWindowIds(), ','));
+=====
+assertAllWindowNames
+===
+assertEquals("%p1%", join(selenium().getAllWindowNames(), ','));
+=====
+assertAllWindowTitles
+===
+assertEquals("%p1%", join(selenium().getAllWindowTitles(), ','));
+=====
+assertAttribute
+===
+assertEquals("%p2%", selenium().getAttribute("%p1%"));
+=====
+assertAttributeFromAllWindows
+===
+assertEquals("%p2%", join(selenium().getAttributeFromAllWindows("%p1%"), ','));
+=====
+assertBodyText
+===
+assertEquals("%p1%", selenium().getBodyText());
+=====
+assertChecked
+===
+assertTrue(selenium().isChecked("%p1%"));
+=====
+assertConfirmation
+===
+assertEquals("%p1%", selenium().getConfirmation());
+=====
+assertCookie
+===
+assertEquals("%p1%", selenium().getCookie());
+=====
+assertCookieByName
+===
+assertEquals("%p2%", selenium().getCookieByName("%p1%"));
+=====
+assertCssCount
+===
+assertEquals("%p2%", selenium().getCssCount("%p1%"));
+=====
+assertCursorPositionassertNotEquals("%p2%", selenium().getEval("%p1%"));
+===
+assertEquals("%p2%", selenium().getCursorPosition("%p1%"));
+=====
+assertElementHeight
+===
+assertEquals("%p2%", selenium().getElementHeight("%p1%"));
+=====
+assertElementIndex
+===
+assertEquals("%p2%", selenium().getElementIndex("%p1%"));
+=====
+assertElementPositionLeft
+===
+assertEquals("%p2%", selenium().getElementPositionLeft("%p1%"));
+=====
+assertElementPositionTop
+===
+assertEquals("%p2%", selenium().getElementPositionTop("%p1%"));
+=====
+assertElementWidth
+===
+assertEquals("%p2%", selenium().getElementWidth("%p1%"));
+=====
+assertEval
+===
+assertEquals("%p2%", selenium().getEval("%p1%"));
+=====
+assertExpression
+===
+assertEquals("%p2%", selenium().getExpression("%p1%"));
+=====
+assertHtmlSource
+===
+assertEquals("%p1%", selenium().getHtmlSource());
+=====
+assertLocation
+===
+assertEquals("%p1%", selenium().getLocation());
+=====
+assertMouseSpeed
+===
+assertEquals("%p1%", selenium().getMouseSpeed());
+=====
+assertOrdered
+===
+assertTrue(selenium().isOrdered("%p1%", "%p2%"));
+=====
+assertPrompt
+===
+assertEquals("%p1%", selenium().getPrompt());
+=====
+assertSelectOptions
+===
+assertEquals("%p2%", join(selenium().getSelectOptions("%p1%"), ','));
+=====
+assertSelectedId
+===
+assertEquals("%p2%", selenium().getSelectedId("%p1%"));
+=====
+assertSelectedIds
+===
+assertEquals("%p2%", join(selenium().getSelectedIds("%p1%"), ','));
+=====
+assertSelectedIndex
+===
+assertEquals("%p2%", selenium().getSelectedIndex("%p1%"));
+=====
+assertSelectedIndexes
+===
+assertEquals("%p2%", join(selenium().getSelectedIndexes("%p1%"), ','));
+=====
+assertSelectedLabel
+===
+assertEquals("%p2%", selenium().getSelectedLabel("%p1%"));
+=====
+assertSelectedLabels
+===
+assertEquals("%p2%", join(selenium().getSelectedLabels("%p1%"), ','));
+=====
+assertSelectedValue
+===
+assertEquals("%p2%", selenium().getSelectedValue("%p1%"));
+=====
+assertSelectedValues
+===
+assertEquals("%p2%", join(selenium().getSelectedValues("%p1%"), ','));
+=====
+assertSomethingSelected
+===
+assertTrue(selenium().isSomethingSelected("%p1%"));
+=====
+assertSpeed
+===
+assertEquals("%p1%", selenium().getSpeed());
+=====
+assertTable
+===
+assertEquals("%p2%", selenium().getTable("%p1%"));
+=====
+assertText
+===
+assertEquals("%p2%", selenium().getText("%p1%"));
+=====
+assertValue
+===
+assertEquals("%p2%", selenium().getValue("%p1%"));
+=====
+assertVisible
+===
+assertTrue(selenium().isVisible("%p1%"));
+=====
+assertXpathCount
+===
+assertEquals("%p2%", selenium().getXpathCount("%p1%"));
+=====
+store
+===
+String %p2% = "%p1%";
+=====
+storeAlert
+===
+String %p1% = selenium().getAlert();
+=====
+storeAlertPresent
+===
+boolean %p1% = selenium().isAlertPresent();
+=====
+storeAllButtons
+===
+String[] %p1% = selenium().getAllButtons();
+=====
+storeAllFields
+===
+String[] %p1% = selenium().getAllFields();
+=====
+storeAllLinks
+===
+String[] %p1% = selenium().getAllLinks();
+=====
+storeAllWindowIds
+===
+String[] %p1% = selenium().getAllWindowIds();
+=====
+storeAllWindowNames
+===
+String[] %p1% = selenium().getAllWindowNames();
+=====
+storeAllWindowTitles
+===
+String[] %p1% = selenium().getAllWindowTitles();
+=====
+storeAllWindowTitles
+===
+String[] %p1% = selenium().getAllWindowTitles();
+=====
+storeAttribute
+===
+String %p2% = selenium().getAttribute("%p1%");
+=====
+storeAttributeFromAllWindows
+===
+String[] %p2% = selenium().getAttributeFromAllWindows("%p1%");
+=====
+storeBodyText
+===
+String %p1% = selenium().getBodyText();
+=====
+storeChecked
+===
+boolean %p2% = selenium().isChecked("%p1%");
+=====
+storeConfirmation
+===
+String %p1% = selenium().getConfirmation();
+=====
+storeConfirmationPresent
+===
+boolean %p1% = selenium().isConfirmationPresent();
+=====
+storeCookie
+===
+String %p1% = selenium().getCookie();
+=====
+storeCookieByName
+===
+String %p2% = selenium().getCookieByName("%p1%");
+=====
+storeCookiePresent
+===
+boolean %p2% = selenium().isCookiePresent("%p1%");
+=====
+storeCssCount
+===
+Number %p2% = selenium().getCssCount("%p1%");
+=====
+storeCursorPosition
+===
+Number %p2% = selenium().getCursorPosition("%p1%");
+=====
+storeEditable
+===
+boolean %p2% = selenium().isEditable("%p1%");
+=====
+storeElementHeight
+===
+Number %p2% = selenium().getElementHeight("%p1%");
+=====
+storeElementIndex
+===
+Number %p2% = selenium().getElementIndex("%p1%");
+=====
+storeElementPositionLeft
+===
+Number %p2% = selenium().getElementPositionLeft("%p1%");
+=====
+storeElementPositionTop
+===
+Number %p2% = selenium().getElementPositionTop("%p1%");
+=====
+storeElementPresent
+===
+boolean %p2% = selenium().isElementPresent("%p1%");
+=====
+storeElementWidth
+===
+Number %p2% = selenium().getElementWidth("%p1%");
+=====
+storeEval
+===
+String %p2% = selenium().getEval("%p1%");
+=====
+storeExpression
+===
+String %p2% = selenium().getExpression("%p1%");
+=====
+storeHtmlSource
+===
+String %p1% = selenium().getHtmlSource();
+=====
+storeLocation
+===
+String %p1% = selenium().getLocation();
+=====
+storeMouseSpeed
+===
+Number %p1% = selenium().getMouseSpeed();
+=====
+storeOrdered
+===
+boolean %p3% = selenium().isOrdered("%p1%", "%p2%");
+=====
+storePrompt
+===
+String %p1% = selenium().getPrompt();
+=====
+storePromptPresent
+===
+boolean %p1% = selenium().isPromptPresent();
+=====
+storeSelectOptions
+===
+String[] %p2% = selenium().getSelectOptions("%p1%");
+=====
+storeSelectedId
+===
+String %p2% = selenium().getSelectedId("%p1%");
+=====
+sendKeys
+===
+selenium().type("%p1%", "%p2%"); // Change sendKeys method to type https://code.google.com/p/selenium/issues/detail?id=6136
+=====
+waitForText
+===
+for (int second = 0;; second++) {
+    if (second >= 60) fail("timeout");
+    try { if ("%p2%".equals(selenium().getText("%p1%"))) break; } catch (Exception e) {}
+    Thread.sleep(1000);
+}
+=====
+waitForElementPresent
+===
+for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (selenium().isElementPresent("%p1%")) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+		}
+=====
+waitForElementNotPresent
+===
+for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (!selenium().isElementPresent("%p1%")) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+		}
