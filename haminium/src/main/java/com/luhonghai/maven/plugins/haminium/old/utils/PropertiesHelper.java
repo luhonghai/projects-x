@@ -20,10 +20,10 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *   THE SOFTWARE.
  */
+package com.luhonghai.maven.plugins.haminium.old.utils;
 
-package com.luhonghai.maven.plugins.haminium;
-
-import java.util.List;
+import java.io.IOException;
+import java.util.Properties;
 
 /** 
  * DOCME
@@ -34,40 +34,31 @@ import java.util.List;
  * @Last changed: $LastChangedDate$
  */
 
-public class CmgiumTestMethod {
-	public static final String TEST_METHOD_PREFIX = "test";
+public class PropertiesHelper {
+	public static final String DEFAULT_PROPERTIES = "cmgium.properties";
 	
-	private String name;
+	private static Properties prop;
 	
-	private List<CmgiumMethod> methods;
-
-	/** 
-	 * @return the name 
-	 */
-	public String getName() {
-		return name;
+	public static Properties getProperties() {
+		if (prop == null) {
+            prop = new Properties();
+			try {
+                prop.load(PropertiesHelper.class.getClassLoader().getResourceAsStream(DEFAULT_PROPERTIES));
+			} catch (IOException e) {				
+				//
+			}
+		}
+		return prop;
 	}
 
-	/** 
-	 * @param name the name to set 
-	 */
+    public static void updateProperties(Properties p) {
+        prop = p;
+    }
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/** 
-	 * @return the methods 
-	 */
-	public List<CmgiumMethod> getMethods() {
-		return methods;
-	}
-
-	/** 
-	 * @param methods the methods to set 
-	 */
-	
-	public void setMethods(List<CmgiumMethod> methods) {
-		this.methods = methods;
+	public static String getKey(String key) {
+		Object obj = getProperties().get(key);
+		if (obj != null) 
+			return obj.toString();
+		return "";
 	}
 }

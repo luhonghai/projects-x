@@ -21,22 +21,18 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium;
+package com.luhonghai.maven.plugins.haminium.old;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.luhonghai.maven.plugins.haminium.utils.Environment;
-import com.luhonghai.maven.plugins.haminium.utils.Validator;
+import com.luhonghai.maven.plugins.haminium.old.utils.Environment;
 import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.openqa.selenium.*;
 
-import com.luhonghai.maven.plugins.haminium.exception.CmgiumException;
-import com.luhonghai.maven.plugins.haminium.utils.PropertiesHelper;
+import com.luhonghai.maven.plugins.haminium.old.exception.CmgiumException;
+import com.luhonghai.maven.plugins.haminium.old.utils.PropertiesHelper;
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;

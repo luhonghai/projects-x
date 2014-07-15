@@ -9,8 +9,6 @@
 
 package com.cmg.maven.plugins.cmgium;
 
-import com.cmg.maven.plugins.cmgium.utils.FileUtils;
-import com.cmg.maven.plugins.cmgium.utils.PropertiesHelper;
 import junit.framework.TestCase;
 
 import java.io.File;

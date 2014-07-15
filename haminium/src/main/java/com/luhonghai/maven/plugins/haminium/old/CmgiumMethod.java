@@ -21,7 +21,7 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium;
+package com.luhonghai.maven.plugins.haminium.old;
 
 import com.luhonghai.maven.plugins.haminium.utils.StringUtils;
 

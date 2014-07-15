@@ -21,12 +21,13 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium.utils;
+package com.luhonghai.maven.plugins.haminium.old.utils;
 
-import com.luhonghai.maven.plugins.haminium.CmgiumMethod;
-import com.luhonghai.maven.plugins.haminium.CmgiumTestMethod;
-import com.luhonghai.maven.plugins.haminium.exception.CmgiumException;
-import org.json.simple.JSONArray;
+import com.luhonghai.maven.plugins.haminium.old.CmgiumMethod;
+import com.luhonghai.maven.plugins.haminium.old.CmgiumTestMethod;
+import com.luhonghai.maven.plugins.haminium.old.exception.CmgiumException;
+import com.luhonghai.maven.plugins.haminium.utils.FileUtils;
+import com.luhonghai.maven.plugins.haminium.utils.StringUtils;
 import org.json.simple.JSONObject;
 import org.xml.sax.SAXException;
 

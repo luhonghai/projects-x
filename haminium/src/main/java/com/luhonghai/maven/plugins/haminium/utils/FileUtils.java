@@ -30,15 +30,30 @@ import java.util.Properties;
 import org.apache.maven.plugin.MojoExecutionException;
 
 /**
- * DOCME
- * 
- * @Creator Hai Lu
- * @author $Author$
- * @version $Revision$
- * @Last changed: $LastChangedDate$
+ * @author Hai Lu
  */
 
 public class FileUtils {
+
+    public static String checkMD5Sum(File file) throws IOException {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(file);
+            return org.apache.commons.codec.digest.DigestUtils.md5Hex(fis);
+        } catch (IOException e) {
+            throw e;
+        } finally {
+            try {
+                fis.close();
+            } catch (Exception e) {
+
+            }
+        }
+    }
+
+    public static String checkMD5Sum(String file) throws IOException {
+        return checkMD5Sum(new File(file));
+    }
 
 	public static String readResourceContent(String resource)
 			throws IOException {

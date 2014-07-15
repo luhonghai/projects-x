@@ -20,7 +20,7 @@
 *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 *   THE SOFTWARE.
 */
-package com.luhonghai.maven.plugins.haminium.exception;
+package com.luhonghai.maven.plugins.haminium.old.exception;
 
 /** 
  * DOCME

@@ -21,7 +21,7 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium.utils;
+package com.luhonghai.maven.plugins.haminium.old.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,13 +33,15 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.luhonghai.maven.plugins.haminium.CommandMapping;
+import com.luhonghai.maven.plugins.haminium.old.CommandMapping;
+import com.luhonghai.maven.plugins.haminium.utils.FileUtils;
+import com.luhonghai.maven.plugins.haminium.utils.StringUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 
-import com.luhonghai.maven.plugins.haminium.Cmgium;
-import com.luhonghai.maven.plugins.haminium.CmgiumMethod;
-import com.luhonghai.maven.plugins.haminium.CmgiumTestMethod;
-import com.luhonghai.maven.plugins.haminium.exception.CmgiumException;
+import com.luhonghai.maven.plugins.haminium.old.Cmgium;
+import com.luhonghai.maven.plugins.haminium.old.CmgiumMethod;
+import com.luhonghai.maven.plugins.haminium.old.CmgiumTestMethod;
+import com.luhonghai.maven.plugins.haminium.old.exception.CmgiumException;
 import com.thoughtworks.selenium.Selenium;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

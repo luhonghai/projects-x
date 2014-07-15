@@ -21,14 +21,9 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium;
+package com.luhonghai.maven.plugins.haminium.old.utils;
 
-import com.luhonghai.maven.plugins.haminium.exception.CmgiumException;
-
-import junit.extensions.TestSetup;
-import junit.framework.Test;
-
-/**
+/** 
  * DOCME
  * 
  * @Creator Hai Lu
@@ -37,35 +32,6 @@ import junit.framework.Test;
  * @Last changed: $LastChangedDate$
  */
 
-public class CmgiumTestSetup extends TestSetup {
-
-	/**
-	 * TODO: document
-	 * 
-	 * @param test
-	 */
-	public CmgiumTestSetup(Test test) {
-		super(test);
-	}
-
-	public void setUp() {
-		try {
-			Cmgium.setup();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (CmgiumException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void tearDown() {
-		Cmgium.teardown();
-	}
-
+public class Common {
+	public static final String EXTENSION_JAVA_FILE = ".java";
 }

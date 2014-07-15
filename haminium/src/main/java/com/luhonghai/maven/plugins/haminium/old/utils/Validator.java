@@ -21,7 +21,7 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium.utils;
+package com.luhonghai.maven.plugins.haminium.old.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
-import com.luhonghai.maven.plugins.haminium.CmgiumMethod;
+import com.luhonghai.maven.plugins.haminium.old.CmgiumMethod;
 
 /** 
  * DOCME

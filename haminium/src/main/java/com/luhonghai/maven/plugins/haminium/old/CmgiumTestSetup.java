@@ -21,23 +21,51 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium.utils;
+package com.luhonghai.maven.plugins.haminium.old;
+
+import com.luhonghai.maven.plugins.haminium.old.exception.CmgiumException;
+
+import junit.extensions.TestSetup;
+import junit.framework.Test;
 
 /**
- * Created by Hai Lu on 27/05/2014.
+ * DOCME
+ * 
+ * @Creator Hai Lu
+ * @author $Author$
+ * @version $Revision$
+ * @Last changed: $LastChangedDate$
  */
-public class Environment {
-    public static final int IE = 1;
-    public static final int CHROME = 2;
-    public static final int FIREFOX = 3;
 
-    public static final int getBrowser() {
-        String webdriver = PropertiesHelper.getKey("webdriver");
-        if (webdriver.equals("org.openqa.selenium.ie.InternetExplorerDriver")) {
-            return IE;
-        } else if (webdriver.equals("org.openqa.selenium.chrome.ChromeDriver")) {
-            return CHROME;
-        }
-        return FIREFOX;
-    }
+public class CmgiumTestSetup extends TestSetup {
+
+	/**
+	 * TODO: document
+	 * 
+	 * @param test
+	 */
+	public CmgiumTestSetup(Test test) {
+		super(test);
+	}
+
+	public void setUp() {
+		try {
+			Cmgium.setup();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (CmgiumException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void tearDown() {
+		Cmgium.teardown();
+	}
+
 }

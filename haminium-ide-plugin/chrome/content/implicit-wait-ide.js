@@ -75,6 +75,7 @@ var Function_Override_BrowserBot_findElement = function (locator, win){
 };
 
 var Function_Override_TestLoop_resume = function() {
+	alert(this.currentCommand.name);
 	try {
 		var self=this;
 		if(this.abord) return;

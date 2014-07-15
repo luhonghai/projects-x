@@ -21,11 +21,12 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium;
+package com.luhonghai.maven.plugins.haminium.mojo;
 
 import java.util.Iterator;
 import java.util.List;
 
+import com.luhonghai.maven.plugins.haminium.old.Cmgium;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -37,12 +38,7 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 /** 
- * DOCME
- * 
- * @Creator Hai Lu
- * @author $Author$
- * @version $Revision$
- * @Last changed: $LastChangedDate$
+ * @author Hai Lu
  */
 
 @Mojo(defaultPhase = LifecyclePhase.TEST_COMPILE, name = "test")

@@ -21,10 +21,11 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium;
+package com.luhonghai.maven.plugins.haminium.mojo;
 
-import com.luhonghai.maven.plugins.haminium.utils.PropertiesHelper;
-import com.luhonghai.maven.plugins.haminium.utils.ScriptGenerator;
+import com.luhonghai.maven.plugins.haminium.old.Cmgium;
+import com.luhonghai.maven.plugins.haminium.old.utils.PropertiesHelper;
+import com.luhonghai.maven.plugins.haminium.old.utils.ScriptGenerator;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.BuildPluginManager;
@@ -37,11 +38,10 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Created by Hai Lu on 26/05/2014.
+ * @author Hai Lu
  */
 
 @Mojo(defaultPhase = LifecyclePhase.GENERATE_TEST_SOURCES, name = "init-plugin")

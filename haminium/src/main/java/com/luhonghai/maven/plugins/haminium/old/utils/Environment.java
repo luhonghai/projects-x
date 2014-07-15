@@ -21,17 +21,23 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium.utils;
+package com.luhonghai.maven.plugins.haminium.old.utils;
 
-/** 
- * DOCME
- * 
- * @Creator Hai Lu
- * @author $Author$
- * @version $Revision$
- * @Last changed: $LastChangedDate$
+/**
+ * Created by Hai Lu on 27/05/2014.
  */
+public class Environment {
+    public static final int IE = 1;
+    public static final int CHROME = 2;
+    public static final int FIREFOX = 3;
 
-public class Common {
-	public static final String EXTENSION_JAVA_FILE = ".java";
+    public static final int getBrowser() {
+        String webdriver = PropertiesHelper.getKey("webdriver");
+        if (webdriver.equals("org.openqa.selenium.ie.InternetExplorerDriver")) {
+            return IE;
+        } else if (webdriver.equals("org.openqa.selenium.chrome.ChromeDriver")) {
+            return CHROME;
+        }
+        return FIREFOX;
+    }
 }

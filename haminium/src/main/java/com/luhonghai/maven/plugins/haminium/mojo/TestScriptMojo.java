@@ -21,13 +21,16 @@
  *   THE SOFTWARE.
  */
 
-package com.luhonghai.maven.plugins.haminium;
+package com.luhonghai.maven.plugins.haminium.mojo;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import com.luhonghai.maven.plugins.haminium.utils.*;
+import com.luhonghai.maven.plugins.haminium.old.Cmgium;
+import com.luhonghai.maven.plugins.haminium.old.CmgiumTestMethod;
+import com.luhonghai.maven.plugins.haminium.old.utils.*;
+import com.luhonghai.maven.plugins.haminium.utils.FileUtils;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.AbstractMojo;
@@ -40,6 +43,9 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 
+/**
+ * @author Hai Lu
+ */
 
 @Mojo(defaultPhase = LifecyclePhase.GENERATE_TEST_SOURCES, name = "init")
 public class TestScriptMojo extends AbstractMojo {

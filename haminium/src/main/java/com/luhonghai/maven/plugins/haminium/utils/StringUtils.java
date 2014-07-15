@@ -24,7 +24,7 @@
 package com.luhonghai.maven.plugins.haminium.utils;
 
 /**
- * Created by Hai Lu on 26/05/2014.
+ * @author Hai Lu
  */
 public class StringUtils {
 
