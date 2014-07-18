@@ -1,10 +1,6 @@
-package test.com.luhonghai.haminium.core.plugins; 
+package com.luhonghai.haminium.core.plugins;
 
-import com.luhonghai.haminium.core.Haminium;
-import com.luhonghai.haminium.core.plugins.DefaultHaminium;
-import org.junit.Test;
-import org.junit.Before; 
-import org.junit.After; 
+import junit.framework.TestCase;
 
 /** 
 * DefaultHaminium Tester. 
@@ -13,13 +9,11 @@ import org.junit.After;
 * @since <pre>Jul 17, 2014</pre> 
 * @version 1.0 
 */ 
-public class DefaultHaminiumTest { 
+public class DefaultHaminiumTest extends TestCase {
 
-@Before
 public void before() throws Exception { 
 } 
 
-@After
 public void after() throws Exception { 
 } 
 
@@ -27,8 +21,7 @@ public void after() throws Exception {
 * 
 * Method: takeScreenshoot(String folderName, String fileName) 
 * 
-*/ 
-@Test
+*/
 public void testTakeScreenshoot() throws Exception {
     DefaultHaminium haminium = new DefaultHaminium(null, null);
 

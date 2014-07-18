@@ -25,6 +25,7 @@
 package com.luhonghai.haminium.remote;
 
 import com.luhonghai.haminium.remote.handler.CommandHandler;
+import org.openqa.grid.selenium.GridLauncher;
 import org.openqa.jetty.http.HttpContext;
 import org.openqa.jetty.http.SocketListener;
 import org.openqa.jetty.jetty.Server;
@@ -163,5 +164,15 @@ public class HaminiumServer {
      */
     public Server getServer() {
         return server;
+    }
+
+    public static void main(String[] args) {
+        try {
+            GridLauncher.main(args);
+            HaminiumServer server = new HaminiumServer(17388);
+            server.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

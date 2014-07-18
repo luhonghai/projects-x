@@ -22,27 +22,14 @@
  * THE SOFTWARE.
  */
 
-package com.luhonghai.haminium.remote.handler;
-
-import com.luhonghai.haminium.core.CommandExecutor;
-import org.codehaus.jackson.map.ObjectMapper;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+package com.luhonghai.haminium.annotation;
 
 /**
  * @author Hai Lu
  */
-public class CommandHandler extends BaseHandler {
+public @interface Parameter {
 
-    protected void process(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        ObjectMapper om = new ObjectMapper();
-        CommandExecutor ce = new CommandExecutor();
-        CommandExecutor.CommandResponse cr = ce.execute();
-        print(om.writeValueAsString(cr));
-    }
+    public String name() default "";
 
+    public String comment() default "";
 }

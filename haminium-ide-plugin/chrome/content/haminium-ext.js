@@ -22,18 +22,8 @@
  * THE SOFTWARE.
  */
 
-package com.luhonghai.haminium.annotation;
-
-/**
- *
- *
- * @author Hai Lu
- */
-public @interface Command {
-
-    public String comment();
-
-    public Argument[] arguments();
-
-    public String script() default "";
+Selenium.prototype.doTakeScreenshot = function(folderName, fileName) {
+    if( !editor.haminium ) throw new SeleniumError("Require Haminium Connector to execute this command!");
+    editor.haminium.executeCommand("takeScreenshoot", folderName, fileName);
+    LOG.log(editor.haminium.result.message, "info");
 }

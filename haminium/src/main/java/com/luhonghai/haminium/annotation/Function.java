@@ -25,11 +25,15 @@
 package com.luhonghai.haminium.annotation;
 
 /**
+ *
+ *
  * @author Hai Lu
  */
-public @interface Argument {
+public @interface Function {
 
-    public String name();
+    public String comment() default "";
 
-    public String comment();
+    public Parameter[] arguments() default {};
+
+    public String script() default "";
 }

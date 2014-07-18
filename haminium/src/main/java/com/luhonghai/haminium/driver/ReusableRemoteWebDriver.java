@@ -49,13 +49,4 @@ public class ReusableRemoteWebDriver  extends RemoteWebDriver {
         setCommandExecutor(executor);
     }
 
-    public static void main(String[] args) {
-        try {
-            GridLauncher.main(new String[] {});
-            HaminiumServer server = new HaminiumServer(17388);
-            server.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

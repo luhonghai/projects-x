@@ -7,7 +7,7 @@ mode con cols=120 lines=60
 
 ###################### Save allPath ###################################
 
-$Project_name = "SeleniumImplicitWait"
+$Project_name = "haminium-connector"
 $Setup_dir = [System.IO.Directory]::GetCurrentDirectory() + "\"
 $Project_dir = (get-item $Setup_dir).parent.fullname + "\"
 $VersionFile_path = $Sources_dir + "install.rdf"
@@ -73,64 +73,19 @@ write-host "  Last creation   : "  $LastCompil_date
 write-host " __________________________________________________________________________________________________"
 write-host ""
 
-write-host " 0-Edit the version number :"
-	[String]$f_get_version = getVersion($VersionFile_txt)
-	write-host "   New version : " $f_get_version
-	write-host "   ** Update the version in update.rdf ..."
-		$file=$VersionFile_path
-		#$oldstring="<em:version>(\d+\.\d+\.\d+)<"
-		#$newstring="<em:version$f_get_version<"
-		#(get-content $file ) | % {$_ -replace $oldstring, $newstring } | Set-Content -path $file
-        [XML]$xmlDoc = [XML](gc $VersionFile_path)
-        $xmlDoc.RDF.Description.version = [string]$f_get_version
-        $xmldoc.Save($file)
-	
-    write-host ""
 
 write-host " 1-Create package :"
 	$ZipInclude_list= @("chrome\*.*","chrome.manifest","install.rdf")
 	$ZipExclude_list= @()
-	$OutputXpi = $Project_name + "-" + $f_get_version + ".xpi"
+	$OutputXpi = $Project_name + "-" + $VersionFile_txt + ".xpi"
     write-host "   ** Create the package $OutputXpi ..."
     	if(test-path($OutputXpi)){ Remove-Item $OutputXpi; }
     	cmd-7zip a $OutputXpi  -tzip -r ($ZipInclude_list|ForEach{$_}) ($ZipExclude_list|ForEach{"-x!"+$_}) |  out-Null
         if($LASTEXITCODE -eq 1) { write-host("  Package creation failed ! ") -ForegroundColor red; break; }
         
     write-host ""
-
-write-host " 2-Edit update.rdf :"
-	write-host "   ** Calculate the sha1 of $OutputXpi..."
-    [String]$updateHash = "sha1:" + ( getSha1($OutputXpi) )
-    [String]$updateLink = "http://selenium-implicit-wait.googlecode.com/files/" + $OutputXpi
-    [XML]$xmlDoc = [XML](gc "update.rdf")
-	$firstchild = $xmlDoc.RDF.Description.updates.Seq.li | Select-Object -first 1
-    if($firstchild.Description.version -ne $f_get_version){
-		write-host "   ** Insert a new version description..."
-        $newchild = $firstchild.Clone()
-        $newchild.Description.version=$f_get_version
-        $firstchild = $xmlDoc.RDF.Description.updates.Seq.InsertBefore($newchild,$firstchild)
-    }else{
-		write-host "   ** Update the version description..."
-	}
-    $firstchild.Description.targetApplication.Description.updateLink = $updateLink
-    $firstchild.Description.targetApplication.Description.updateHash = $updateHash
-    $xmldoc.save("update.rdf")
-    
-    write-host ""
- 
-write-host " 2-Package user-extensions :"
-	write-host "   ** Create zip file for user-extensions.js ..."
-	$OutputExtZip = $Project_name + "-user-extensions-" + $f_get_version + ".zip"
-	$ZipInclude_list= @("user-extensions.js")
-	$ZipExclude_list= @()
-    cmd-7zip a $OutputExtZip  -tzip -r ($ZipInclude_list|ForEach{$_}) ($ZipExclude_list|ForEach{"-x!"+$_}) |  out-Null
-    if($LASTEXITCODE -eq 1) { write-host("  Package creation for user-extension failed ! ") -ForegroundColor red; break; }
-    
-    write-host ""
  	
 write-host " 2-Install in firefox :"
 	write-host "   ** Launching Firefox for installation..."
 	cmd-firefox $OutputXpi
- 
-$input = read-host "   Press enter to quit "
 exit

@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.luhonghai.maven.plugins</groupId>
-	<artifactId>haminium</artifactId>
+	<artifactId>com.luhonghai.haminium</artifactId>
 	<version>0.0.2</version>
 	<packaging>maven-plugin</packaging>
 	<name>Haminium Maven Mojo</name>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.4</version>
+            <version>3.8.1</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>

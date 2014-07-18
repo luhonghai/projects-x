@@ -24,8 +24,8 @@
 
 package com.luhonghai.haminium.core.plugins;
 
-import com.luhonghai.haminium.annotation.Argument;
-import com.luhonghai.haminium.annotation.Command;
+import com.luhonghai.haminium.annotation.Function;
+import com.luhonghai.haminium.annotation.Parameter;
 import com.luhonghai.haminium.core.Haminium;
 import com.thoughtworks.selenium.Selenium;
 import org.openqa.selenium.WebDriver;
@@ -49,19 +49,19 @@ public class DefaultHaminium extends Haminium {
      * @param fileName the file name of screen shoot. Leave empty this will take
      *                 Test case name
      */
-    @Command(
+    @Function(
             comment =  "<p>This method (command) use for saves the entire contents" +
                     " of the current window canvas" +
                     "to a PNG file." +
                     "<p>By default, the root folder of screen shots is " +
                     "[PROJECT ROOT]/target/artifact/screenshots</p>",
             arguments =  {
-                    @Argument(
+                    @Parameter(
                             name = "folderName",
                             comment = "the folder name inside root folder. " +
                                       "Leave empty this will take " +
                                       "Test suite name"),
-                    @Argument(
+                    @Parameter(
                             name = "fileName",
                             comment = "the file name of screen shoot. " +
                                     "Leave empty this will take" +
@@ -71,4 +71,5 @@ public class DefaultHaminium extends Haminium {
     public void takeScreenshoot(String folderName, String fileName) {
 
     }
+
 }
