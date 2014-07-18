@@ -28,8 +28,6 @@ function Haminium(editor) {
 	this.isRequesting = false;
 	this.isWaiting = false;
 	this.editor = editor;
-    this.timeout = null;
-	this.buttonHouglassChecked = false;
 	this.isLogEnabled=true;
 	editor.app.addObserver({
 		testSuiteChanged: function(testSuite) {
@@ -38,28 +36,13 @@ function Haminium(editor) {
 			}
 		}
 	});
-
-    self.HookAnObjectMethodBefore(Editor.controller, 'doCommand', self, self.doCommandHooked);
 }
 
-Haminium.prototype.doCommandHooked = function( cmd ) {
-    alert("I'm here is okay?");
-    switch (cmd) {
-        case "cmd_selenium_play":
-            LOG.log("play command", "info");
-            alert("play command here!");
-            break;
-        case "cmd_selenium_play_suite":
-        case "cmd_selenium_reload":
-                editor.haminium.isWaiting = true;
-                alert("start command here!");
-                LOG.log("reload", "info");
-            break;
-    }
-    return true;
-};
-
 Haminium.prototype.executeCommand = function(name, param1, param2) {
+    var waitObj = {
+        isWaitingHaminium: true,
+        message: "Waiting for command execution complete ..."
+    }
     if (!editor.haminium.isRequesting && !editor.haminium.isWaiting) {
         editor.haminium.isWaiting = true;
         editor.haminium.result = null;
@@ -68,23 +51,14 @@ Haminium.prototype.executeCommand = function(name, param1, param2) {
                 this.remoteCommandUrl + "/" + name + "/" + param1 + "/" + param2,
             null,
             function(data) {
-                if (editor.haminium.timeout) {
-                    clearTimeout(editor.haminium.timeout);
-                }
                 if (typeof data != 'undefined' && data.length > 0) {
                     editor.haminium.isRequesting = false;
                     editor.haminium.result = JSON.parse(data);
                 }
             });
-        throw {
-            isWaitingHaminium: true,
-            message: "Waiting for command execution complete ..."
-        }
+        throw waitObj;
     } else if (!editor.haminium.result) {
-        throw {
-            isWaitingHaminium: true,
-            message: "Waiting for command execution complete ..."
-        }
+        throw waitObj;
     }
 };
 
@@ -99,13 +73,11 @@ Haminium.prototype.selDebuggerInitHooked = function( object, arguments, retvalue
             }
             editor.selDebugger.runner.selenium.browserbot.runScheduledPollers();
             this._executeCurrentCommand();
-            editor.haminium.isWaiting = false;
             this.continueTestWhenConditionIsTrue();
         } catch (e) {
             if(e.isWaitingHaminium){
                 editor.haminium.isLogEnabled = false;
-                editor.haminium.timeout = window.setTimeout( function(){return self.resume.apply(self);}, 20);
-                return editor.haminium.timeout;
+                return window.setTimeout( function(){return self.resume.apply(self);}, 20);
             }
             editor.haminium.isLogEnabled = true;
             if(!this._handleCommandError(e)){
@@ -113,9 +85,9 @@ Haminium.prototype.selDebuggerInitHooked = function( object, arguments, retvalue
             }else {
                 this.continueTest();
             }
-            editor.haminium.isWaiting = false;
         }
         editor.haminium.isLogEnabled = true;
+        editor.haminium.isWaiting = false;
     };
 	this.HookAnObjectMethodBefore(object.runner.LOG, 'log', this, function(){return this.isLogEnabled} );
 };

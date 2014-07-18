@@ -22,8 +22,8 @@
  * THE SOFTWARE.
  */
 
-Selenium.prototype.doTakeScreenshot = function(folderName, fileName) {
+Selenium.prototype.getUserAgent = function(folderName, fileName) {
     if( !editor.haminium ) throw new SeleniumError("Require Haminium Connector to execute this command!");
     editor.haminium.executeCommand("takeScreenshoot", folderName, fileName);
-    LOG.log(editor.haminium.result.message, "info");
+    return editor.haminium.result.message;
 }
