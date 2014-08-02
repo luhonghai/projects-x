@@ -56,9 +56,14 @@ public class ApiDoc {
         return functions;
     }
 
-    public Function newFunction() {
+    public Function newFunction(String name) {
         final Function f = new Function();
-        getFunctions().add(f);
+        f.name = name;
+        final List<Function> functions = getFunctions();
+        if (functions.contains(f)) {
+            functions.remove(f);
+        }
+        functions.add(f);
         return f;
     }
 
@@ -107,6 +112,16 @@ public class ApiDoc {
 
         private String comment;
 
+        @Override
+        public boolean equals(Object obj) {
+            // Make the equals simply with just compare name
+            if (obj == null || obj.getClass() != getClass()) {
+                return false;
+            } else {
+                return this.getName().equals(((Function) obj).getName());
+            }
+        }
+
         public Parameter newParameter() {
             final Parameter p = new Parameter();
             getParameters().add(p);
@@ -116,10 +131,6 @@ public class ApiDoc {
         @XmlAttribute
         public String getName() {
             return this.name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
         }
 
         @XmlElement(name = "param")

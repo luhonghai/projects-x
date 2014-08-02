@@ -33,7 +33,7 @@ public @interface Function {
 
     public String comment() default "";
 
-    public Parameter[] arguments() default {};
+    public Parameter[] params() default {};
 
     public String script() default "";
 }

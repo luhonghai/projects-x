@@ -26,7 +26,7 @@ public void after() throws Exception {
 */
 public void testToXml() throws Exception {
     ApiDoc doc = new ApiDoc();
-    ApiDoc.Function function = doc.newFunction();
+    ApiDoc.Function function = doc.newFunction("takeScreenshoot");
     function.setName("takeScreenshoot");
     function.setComment("<p>This method (command) use for saves the entire contents" +
             " of the current window canvas" +
@@ -43,6 +43,10 @@ public void testToXml() throws Exception {
     param.setComment("the file name of screen shoot. " +
             "Leave empty this will take" +
             " Test case name");
+
+    function = doc.newFunction("notakeScreenshoot");
+    function.setName("takeScreenshoot");
+    function.setComment("more simply");
 
 
     for (ApiDoc.Function f : doc.getFunctions()) {

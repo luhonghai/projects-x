@@ -103,11 +103,11 @@ public class ScriptGenerator {
         StringBuffer sb = new StringBuffer();
         sb.append("\nSelenium.prototype.do")
                 .append(name)
-                .append(" = function(arguments) {");
+                .append(" = function(params) {");
         if (methods != null && methods.size() > 0) {
             for (CmgiumMethod method : methods) {
                 if (method.getName().equalsIgnoreCase("setParameter")) {
-                    sb.append("\n\tSelenium[\"prototype\"][\"doSetParameter\"].call(this,arguments);");
+                    sb.append("\n\tSelenium[\"prototype\"][\"doSetParameter\"].call(this,params);");
                 } else if (method.getName().equalsIgnoreCase("andWait")) {
                     sb.append("\n\tSelenium[\"prototype\"][\"doWaitForPageToLoad\"].call(this,\"30000\");");
                 } else {

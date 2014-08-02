@@ -55,7 +55,7 @@ public class DefaultHaminium extends Haminium {
                     "to a PNG file." +
                     "<p>By default, the root folder of screen shots is " +
                     "[PROJECT ROOT]/target/artifact/screenshots</p>",
-            arguments =  {
+            params =  {
                     @Parameter(
                             name = "folderName",
                             comment = "the folder name inside root folder. " +

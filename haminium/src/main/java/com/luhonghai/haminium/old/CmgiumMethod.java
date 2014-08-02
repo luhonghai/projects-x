@@ -65,7 +65,7 @@ public class CmgiumMethod {
 		this.name = name;
 	}
 	/** 
-	 * @return the arguments
+	 * @return the params
 	 */
 	public List<String> getParams() {
 		if (params == null) 
@@ -73,7 +73,7 @@ public class CmgiumMethod {
 		return params;
 	}
 	/** 
-	 * @param params the arguments to set
+	 * @param params the params to set
 	 */
 	
 	public void setParams(List<String> params) {
