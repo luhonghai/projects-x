@@ -26,25 +26,31 @@ public class VfsMappingGenerator {
     public VfsMappingGenerator() {
     }
 
-    public List<VfsMappingObject> generate(Map<String, String> lookupList) throws IOException {
-
+    public List<VfsMappingObject> generate(List<SyncManager.LookupMapping> lookupList) throws IOException {
         List<VfsMappingObject> list = new ArrayList<VfsMappingObject>();
-        Iterator<String> keys = lookupList.keySet().iterator();
-        while (keys.hasNext()) {
-            String lookupDir = keys.next();
-            String dest = lookupList.get(lookupDir);
-            VfsMapping mapping = new VfsMapping(new File(lookupDir), new File(lookupDir) , dest);
-            Logger.getLogger().info("Looking for sync directory: " + lookupDir + ". WebDav destination: " + dest);
-            try {
-                mapping.init();
-                for (VfsMappingObject obj : mapping.getMappings()) {
-                    if (!list.contains(obj)) {
-                        list.add(obj);
-                        org.apache.commons.io.FileUtils.write(getPublishingList(), obj.getVfsPath() + "\n", "UTF-8", true);
+        for (SyncManager.LookupMapping lookupItem : lookupList) {
+            if (lookupItem.isExist()) {
+                List<VfsMappingObject> mappingObj = generate(lookupItem.getRoot(), lookupItem.getTarget(), lookupItem.getDestination());
+                for (VfsMappingObject obj : mappingObj) {
+                    if (lookupItem.getIgnoreExtensions().length > 0) {
+                        boolean isValid = true;
+                        for (String ext : lookupItem.getIgnoreExtensions()) {
+                            if (!obj.getFile().isDirectory() && obj.getFile().getAbsolutePath().endsWith("." + ext)) {
+                                isValid = false;
+                                break;
+                            }
+                        }
+                        if (isValid) {
+                            if (!list.contains(obj))
+                                list.add(obj);
+                        }
+                    } else {
+                        if (!list.contains(obj))
+                            list.add(obj);
                     }
                 }
-            } catch (FileNotFoundException e) {
-                Logger.getLogger().warn("Skip sync directory " + lookupDir + ". Directory not found.");
+            } else {
+                Logger.getLogger().warn("Directory not found! Skip looking for directory " + lookupItem.getTarget().getAbsolutePath());
             }
         }
         return list;

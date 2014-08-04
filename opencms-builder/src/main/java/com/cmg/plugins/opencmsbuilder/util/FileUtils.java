@@ -35,6 +35,11 @@ public class FileUtils {
         return path;
     }
 
+    public static boolean isContain(File folder, String target) {
+        if (target == null || target.length() == 0) return false;
+        return isContain(folder, new File(target));
+    }
+
     public static boolean isContain(File folder, File target) {
         if (folder == null || !folder.exists() || target == null || !target.exists()) {
             return false;
@@ -43,10 +48,12 @@ public class FileUtils {
     }
 
     public static boolean isContain(String folder, File target) {
+        if (folder == null || folder.length() == 0) return false;
        return isContain(new File(folder), target);
     }
 
     public static boolean isContain(String folder, String target) {
+        if (folder == null || target == null || folder.length() == 0 || target.length() == 0) return false;
         return isContain(new File(folder), new File(target));
     }
 }

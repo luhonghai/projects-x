@@ -22,16 +22,17 @@ public class ApplicationConfiguration {
     private String servletMapping;
     private String defaultWebApp;
     private String moduleName;
+    private String remoteServer;
 
     public String getRemoteServer() {
+        if (remoteServer == null)
+            remoteServer = "";
         return remoteServer;
     }
 
     public void setRemoteServer(String remoteServer) {
         this.remoteServer = remoteServer;
     }
-
-    private String remoteServer;
 
     public String getWebInfPath() {
         return getOpencmsHome() + "/" + WEBINF;

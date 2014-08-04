@@ -9,6 +9,7 @@
 
 package com.cmg.plugins.opencmsbuilder.command;
 
+import com.cmg.plugins.opencmsbuilder.ApplicationConfiguration;
 import com.cmg.plugins.opencmsbuilder.client.CommandRequester;
 import com.cmg.plugins.opencmsbuilder.helper.WindowsService;
 import com.cmg.plugins.opencmsbuilder.remote.RemoteCommand;
@@ -26,11 +27,14 @@ public class ServiceCommand {
     public static final String STOP = "stop";
     public static final String RESTART = "restart";
 
+    private final ApplicationConfiguration configuration;
     private final String type;
     private final String serviceName;
     private final String remoteServer;
 
     public ServiceCommand(String type, String serviceName, String remoteServer) {
+        this.configuration = new ApplicationConfiguration();
+        this.configuration.setRemoteServer(remoteServer);
         this.type = type;
         this.serviceName = serviceName;
         this.remoteServer = remoteServer;
@@ -40,16 +44,23 @@ public class ServiceCommand {
         Logger.getLogger().info(type + " service " + serviceName + " ...");
         try {
             if (remoteServer != null && remoteServer.length() > 0) {
-                CommandRequester requestor = new CommandRequester(null);
+                CommandRequester requestor = new CommandRequester(configuration);
                 RemoteCommand command = new RemoteCommand();
                 command.setName(type);
-                command.setParameters(new String[] {serviceName});
+                command.setParameters(new String[]{serviceName});
+                command.setType(RemoteCommand.WINDOWS_SERVICE);
                 requestor.addCommand(command);
                 requestor.execute();
             } else {
                 WindowsService ws = new WindowsService(serviceName);
-
-                boolean status = ws.restart();
+                boolean status = false;
+                if (type == START) {
+                    status = ws.start();
+                } else  if (type == STOP) {
+                    status = ws.stop();
+                } else if (type == RESTART) {
+                    status = ws.restart();
+                }
                 if (status) {
                     Logger.getLogger().info("Completed");
                 } else {

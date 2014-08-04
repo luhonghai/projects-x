@@ -42,14 +42,14 @@ public void testInit() throws Exception {
 * 
 */ 
 public void testGetMappings() throws Exception {
-    VfsMapping vfsContent = new VfsMapping(new File("D:\\GIT\\pensionline-repo\\core\\vfs\\system"), new File("D:\\GIT\\pensionline-repo\\core\\vfs\\system"), "/system/");
-    vfsContent.init();
-    List<VfsMappingObject> list = vfsContent.getMappings();
-    for (VfsMappingObject obj : list) {
-        System.out.println(">>>");
-        System.out.println("Des: " + obj.getDestination());
-        System.out.println("File: " + obj.getFile());
-    }
+//    VfsMapping vfsContent = new VfsMapping(new File("D:\\GIT\\pensionline-repo\\core\\vfs\\system"), new File("D:\\GIT\\pensionline-repo\\core\\vfs\\system"), "/system/");
+//    vfsContent.init();
+//    List<VfsMappingObject> list = vfsContent.getMappings();
+//    for (VfsMappingObject obj : list) {
+//        System.out.println(">>>");
+//        System.out.println("Des: " + obj.getDestination());
+//        System.out.println("File: " + obj.getFile());
+//    }
 } 
 
 

@@ -12,7 +12,9 @@ package com.cmg.plugins.opencmsbuilder.mojo;
 import com.cmg.plugins.opencmsbuilder.ApplicationConfiguration;
 import com.cmg.plugins.opencmsbuilder.publisher.SyncManager;
 import com.cmg.plugins.opencmsbuilder.util.FileUtils;
+import com.cmg.plugins.opencmsbuilder.util.Logger;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -23,6 +25,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * @author Hai Lu
@@ -79,9 +82,13 @@ public class VfsSync extends AbstractMojo {
     @Parameter(property = "syncTarget")
     private String syncTarget;
 
+    @Parameter(property = "remoteServer")
+    private String remoteServer;
+
     public void execute() throws MojoExecutionException, MojoFailureException {
         MojoCMG.init(getLog());
         ApplicationConfiguration configuration = new ApplicationConfiguration();
+        configuration.setRemoteServer(remoteServer);
         configuration.setBaseURL(webdavBaseUrl);
         configuration.setUsername(adminUsername);
         configuration.setPassword(adminPassword);
@@ -94,7 +101,8 @@ public class VfsSync extends AbstractMojo {
         warDir = FileUtils.validatePath(warDir);
 
         SyncManager syncManager = new SyncManager(configuration,
-                vfsSitesDefaut, vfsSystem,warDir, moduleName,mavenProject.getBasedir(), sourceDirectory, outputDirectory, syncTarget);
+                vfsSitesDefaut, vfsSystem,warDir, moduleName,mavenProject.getBasedir(),
+                sourceDirectory, outputDirectory, syncTarget,mavenProject.getBuild().getResources());
         syncManager.execute();
     }
 

@@ -78,9 +78,13 @@ public class VfsSyncPublish extends AbstractMojo {
     @Parameter(property = "syncTarget")
     private String syncTarget;
 
+    @Parameter(property = "remoteServer")
+    private String remoteServer;
+
     public void execute() throws MojoExecutionException, MojoFailureException {
         MojoCMG.init(getLog());
         ApplicationConfiguration configuration = new ApplicationConfiguration();
+        configuration.setRemoteServer(remoteServer);
         configuration.setBaseURL(webdavBaseUrl);
         configuration.setUsername(adminUsername);
         configuration.setPassword(adminPassword);
@@ -89,8 +93,11 @@ public class VfsSyncPublish extends AbstractMojo {
         getLog().info("Use Admin account: " + adminUsername);
         getLog().info("OpenCMS Home: " + opencmsHome);
         SyncManager syncManager = new SyncManager(configuration,
-                vfsSitesDefaut, vfsSystem,warDir, moduleName,mavenProject.getBasedir(), sourceDirectory, outputDirectory, syncTarget, true);
+                vfsSitesDefaut, vfsSystem, warDir, moduleName,
+                mavenProject.getBasedir(), sourceDirectory, outputDirectory,
+                syncTarget,mavenProject.getBuild().getResources(), true);
         syncManager.execute();
+
     }
 
 

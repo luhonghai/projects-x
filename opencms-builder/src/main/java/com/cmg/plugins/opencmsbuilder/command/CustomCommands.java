@@ -11,6 +11,7 @@ package com.cmg.plugins.opencmsbuilder.command;
 
 import com.cmg.plugins.opencmsbuilder.helper.OpenCmsPublisher;
 import com.cmg.plugins.opencmsbuilder.util.Logger;
+import com.google.gson.Gson;
 import org.opencms.file.CmsObject;
 import org.opencms.main.CmsShell;
 import org.opencms.main.I_CmsShellCommands;
@@ -31,6 +32,14 @@ public class CustomCommands implements I_CmsShellCommands {
     public void initShellCmsObject(CmsObject cmsObject, CmsShell cmsShell) {
         this.object = cmsObject;
         this.shell = cmsShell;
+    }
+
+    public void publishResourcesList(String dataPackage) {
+        Gson gson = new Gson();
+        CommandPackage commandPackage = gson.fromJson(dataPackage, CommandPackage.class);
+        if (commandPackage != null && commandPackage.getList().size() > 0) {
+            OpenCmsPublisher.publishResources(commandPackage.getList(), object);
+        }
     }
 
     public void publishResources(String filePath) {
@@ -80,5 +89,20 @@ public class CustomCommands implements I_CmsShellCommands {
 
     public void shellStart() {
 
+    }
+
+    static public class CommandPackage {
+        private List<String> list;
+
+        public List<String> getList() {
+            if (list == null) {
+                list = new ArrayList<String>();
+            }
+            return list;
+        }
+
+        public void setList(List<String> list) {
+            this.list = list;
+        }
     }
 }

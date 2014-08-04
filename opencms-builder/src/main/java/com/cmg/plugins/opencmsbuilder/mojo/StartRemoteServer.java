@@ -23,8 +23,8 @@ import org.apache.maven.plugins.annotations.Parameter;
 @Mojo(name = "remote-server")
 public class StartRemoteServer extends AbstractMojo {
 
-    @Parameter(property = "remotePort", required = true)
-    private int remotePort = 77777;
+    @Parameter(property = "remotePort")
+    private int remotePort = 1919;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         MojoCMG.init(getLog());

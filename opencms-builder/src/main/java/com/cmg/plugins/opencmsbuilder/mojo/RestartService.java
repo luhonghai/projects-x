@@ -9,6 +9,7 @@
 
 package com.cmg.plugins.opencmsbuilder.mojo;
 
+import com.cmg.plugins.opencmsbuilder.ApplicationConfiguration;
 import com.cmg.plugins.opencmsbuilder.command.ServiceCommand;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;

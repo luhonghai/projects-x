@@ -58,7 +58,7 @@ public class CommandRequester {
         Gson gson = new Gson();
         RemotePackage remotePackage = new RemotePackage();
         remotePackage.setConfiguration(configuration);
-        RemoteCommand[] listRemoteCommands = new RemoteCommand[] {};
+        RemoteCommand[] listRemoteCommands = new RemoteCommand[commands.size()];
         commands.toArray(listRemoteCommands);
         remotePackage.setRemoteCommands(listRemoteCommands);
 
@@ -75,7 +75,7 @@ public class CommandRequester {
             StringWriter writer = new StringWriter();
             IOUtils.copy(is, writer, "UTF-8");
             String data = writer.toString();
-            Logger.getLogger().info("Receive response ...");
+            Logger.getLogger().info("Receive response ... " + data);
             CommandResponse cr = gson.fromJson(data, CommandResponse.class);
             Logger.getLogger().info("Execution time: " + cr.getExecutionTime() + "ms");
             if (cr.getType().equals(CommandResponse.TYPE_ERROR)) {

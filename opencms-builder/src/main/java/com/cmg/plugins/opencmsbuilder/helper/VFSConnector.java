@@ -50,7 +50,7 @@ public class VFSConnector {
                 sardine.createDirectory(url);
             }
             List<DavResource> resources = sardine.list(url);
-            Logger.getLogger().info("Found dir " + dir + ". Children size: " + resources.size());
+            //Logger.getLogger().info("Found dir " + dir + ". Children size: " + resources.size());
             directories.add(dir);
         }
     }

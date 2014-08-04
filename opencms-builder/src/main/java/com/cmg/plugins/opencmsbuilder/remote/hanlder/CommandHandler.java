@@ -15,6 +15,7 @@ import com.cmg.plugins.opencmsbuilder.helper.WindowsService;
 import com.cmg.plugins.opencmsbuilder.remote.CommandResponse;
 import com.cmg.plugins.opencmsbuilder.remote.RemoteCommand;
 import com.cmg.plugins.opencmsbuilder.remote.RemotePackage;
+import com.cmg.plugins.opencmsbuilder.util.Logger;
 import com.google.gson.Gson;
 import org.apache.commons.lang.exception.ExceptionUtils;
 
@@ -40,14 +41,16 @@ public class CommandHandler extends BaseHandler {
                 cr.setType(CommandResponse.TYPE_ERROR);
                 cr.setMessage("Missing data parameter");
             } else {
+                Logger.getLogger().info(data);
                 StringBuffer sb = new StringBuffer();
+                Logger.getLogger().info("Parsing data...");
                 RemotePackage remotePackage = gson.fromJson(data, RemotePackage.class);
+                Logger.getLogger().info("Detect remote package");
                 RemoteCommand[] commands = remotePackage.getRemoteCommands();
                 if (commands != null && commands.length > 0) {
-                    if (remotePackage.getConfiguration() != null) {
-                        connector = new CmsShellConnector(remotePackage.getConfiguration());
-                    }
+
                     for (RemoteCommand command: commands) {
+                        Logger.getLogger().info("Execute command: " + command.getName());
                         switch (command.getType()) {
                             case RemoteCommand.WINDOWS_SERVICE:
                                 String[] parameters = command.getParameters();
@@ -69,9 +72,11 @@ public class CommandHandler extends BaseHandler {
                                 }
                                 break;
                             case RemoteCommand.CMS_SHELL:
-                                if (connector != null) {
-                                    sb.append(connector.executeCommand(command)).append("\n");
+                                if (connector == null) {
+                                    connector = new CmsShellConnector(remotePackage.getConfiguration());
+                                    connector.open();
                                 }
+                                sb.append(connector.executeCommand(command)).append("\n");
                             default:
                                 break;
                         }
