@@ -15,5 +15,5 @@ package com.cmg.plugins.opencmsbuilder;
 public class Constants {
 
     // Waiting time for service change status. From RUNNING to STOPPED or STOPPED to RUNNING
-    public static final int SERVICE_WAITING_TIME = 3 * 60;
+    public static final int SERVICE_WAITING_TIME = 10 * 60;
 }

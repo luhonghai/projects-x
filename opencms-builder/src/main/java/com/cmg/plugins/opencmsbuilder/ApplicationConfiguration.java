@@ -13,7 +13,7 @@ package com.cmg.plugins.opencmsbuilder;
  * @author Hai Lu
  */
 public class ApplicationConfiguration {
-    private final String WEBINF = "WEB-INF";
+    private final String WEB_INF = "WEB-INF";
 
     private String username;
     private String password;
@@ -35,7 +35,7 @@ public class ApplicationConfiguration {
     }
 
     public String getWebInfPath() {
-        return getOpencmsHome() + "/" + WEBINF;
+        return getOpencmsHome() + "/" + WEB_INF;
     }
 
 
